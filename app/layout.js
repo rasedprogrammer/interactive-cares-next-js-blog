@@ -1,4 +1,5 @@
 import "./globals.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const metadata = {
   title: "Next Js Blog App",
@@ -7,7 +8,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" data-bs-theme="dark">
       <body>{children}</body>
     </html>
   );
