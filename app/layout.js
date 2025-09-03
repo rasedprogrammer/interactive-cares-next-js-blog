@@ -1,5 +1,8 @@
+import { TopNav } from "@/components/nav/TopNav";
+// import { ThemeProvider } from "@/context/Theme";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { ThemeProvider } from "./context/theme";
 
 export const metadata = {
   title: "Next Js Blog App",
@@ -9,7 +12,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-bs-theme="dark">
-      <body>{children}</body>
+      <ThemeProvider>
+        <body>
+          <TopNav />
+          {children}
+        </body>
+      </ThemeProvider>
     </html>
   );
 }
