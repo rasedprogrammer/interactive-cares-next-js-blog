@@ -1,8 +1,8 @@
 import { TopNav } from "@/components/nav/TopNav";
-// import { ThemeProvider } from "@/context/Theme";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ThemeProvider } from "./context/theme";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Next Js Blog App",
@@ -15,6 +15,7 @@ export default function RootLayout({ children }) {
       <ThemeProvider>
         <body>
           <TopNav />
+          <Toaster />
           {children}
         </body>
       </ThemeProvider>
