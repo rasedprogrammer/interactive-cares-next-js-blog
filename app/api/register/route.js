@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/utils/dbConnect";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import user from "@/models/user";
 
 export async function POST(req) {
@@ -15,7 +15,7 @@ export async function POST(req) {
       password: await bcrypt.hash(password, 10),
     }).save();
     return NextResponse.json(
-      { message: "User registered successfully. Please login." },
+      { success: "User registered successfully. Please login." },
       { status: 201 }
     );
   } catch (error) {
