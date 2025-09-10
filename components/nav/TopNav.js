@@ -13,6 +13,9 @@ export const TopNav = () => {
         </Link>
       </div>
       <div className="d-flex justify-content-start">
+        <Link className="nav-link" href="/login">
+          Login
+        </Link>
         <Link className="nav-link" href="/register">
           Register
         </Link>
