@@ -1,7 +1,11 @@
 import ThemeToggle from "@/components/theme/ThemeToggle";
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
 
 export const TopNav = () => {
+  const { data, status, loading } = useSession();
+  console.table({ data, status, loading });
+
   return (
     <nav className="nav shadow justify-content-between mb-2">
       <div className="d-flex justify-content-start">
@@ -12,13 +16,29 @@ export const TopNav = () => {
           Write a Blog
         </Link>
       </div>
-      <div className="d-flex justify-content-start">
-        <Link className="nav-link" href="/login">
-          Login
-        </Link>
-        <Link className="nav-link" href="/register">
-          Register
-        </Link>
+      <div className="d-flex align-items-center">
+        {status === "authenticated" ? (
+          <>
+            <Link className="nav-link" href="/dashboard/user">
+              {data?.user?.name}
+            </Link>
+            <a
+              className="nav-link pointer"
+              onClick={() => signOut({ callbackUrl: "/login" })}
+            >
+              Logout
+            </a>
+          </>
+        ) : (
+          <div className="d-flex justify-content-start">
+            <Link className="nav-link" href="/login">
+              Login
+            </Link>
+            <Link className="nav-link" href="/register">
+              Register
+            </Link>
+          </div>
+        )}
         <ThemeToggle />
       </div>
     </nav>

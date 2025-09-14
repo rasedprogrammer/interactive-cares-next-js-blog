@@ -15,22 +15,25 @@ export const authOptions = {
         const { email, password } = credentials;
         const user = await User.findOne({ email });
 
-        if(!user) {
-            throw new Error("Invalid email or password")
+        if (!user) {
+          throw new Error("Invalid email or password");
         }
-        i(!user?.password) {
-            throw new Error("Please login via the method you used to register")
+        if (!user?.password) {
+          throw new Error("Please login via the method you used to register");
         }
-        const isPasswordCorrect = await bcrypt.compare(password, user?.password)
-        if(!isPasswordCorrect){
-            throw new Error("Invalid email and password")
-        } 
+        const isPasswordCorrect = await bcrypt.compare(
+          password,
+          user?.password
+        );
+        if (!isPasswordCorrect) {
+          throw new Error("Invalid email and password");
+        }
         return user;
       },
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
-    signIn: "/login"
-  }
+    signIn: "/login",
+  },
 };
