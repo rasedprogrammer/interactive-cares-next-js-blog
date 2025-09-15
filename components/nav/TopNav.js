@@ -3,8 +3,8 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 
 export const TopNav = () => {
-  const { data, status, loading } = useSession();
-  console.table({ data, status, loading });
+  const { data, status } = useSession();
+  console.log({ data });
 
   return (
     <nav className="nav shadow justify-content-between mb-2">

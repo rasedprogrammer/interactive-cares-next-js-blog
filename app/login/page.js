@@ -38,7 +38,7 @@ export default function Login() {
     <div className="container">
       <div className="row d-flex justify-content-center align-items-center vh-90">
         <div className="col-lg-5 p-4 shadow">
-          <h2 className="fw-bold lead mb-4">Register</h2>
+          <h2 className="fw-bold lead mb-4">Login</h2>
           <form onSubmit={handleSubmit}>
             <input
               type="email"
@@ -63,6 +63,12 @@ export default function Login() {
               {loading ? "Please wait.." : "Submit"}
             </button>
           </form>
+          <button
+            onClick={() => signIn("google", { callbackUrl })}
+            className="btn btn-lg btn-danger w-100 my-4"
+          >
+            Sign In With Google
+          </button>
           <Link href="/forgot-password" className="nav-link text-center">
             Forgot Password
           </Link>
