@@ -22,6 +22,14 @@ export const TopNav = () => {
             <Link className="nav-link" href="/dashboard/user">
               {data?.user?.name}
             </Link>
+            {data?.user?.role
+              .filter((r) => r !== "subscriber")
+              .map((r) => (
+                <Link className="nav-link" href={`/dashboard/${r}`}>
+                  {r?.charAt(0).toUpperCase()}
+                  {r?.slice(1)}
+                </Link>
+              ))}
             <a
               className="nav-link pointer"
               onClick={() => signOut({ callbackUrl: "/login" })}
